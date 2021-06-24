@@ -1,0 +1,57 @@
+plugins {
+    id 'com.jfrog.bintray'
+    id 'java'
+    id 'groovy'
+    id 'maven-publish'
+}
+
+repositories {
+    google()
+    jcenter()
+}
+
+sourceCompatibility = "${target}"
+targetCompatibility = "${target}"
+
+sourceSets.main {
+    java {
+        srcDirs = ['src']
+    }
+
+    groovy {
+        srcDirs = ['src']
+    }
+
+    resources {
+        srcDirs = ['src']
+        include '**/*.properties'
+        include '**/*.gif'
+        include '**/*.png'
+        include '**/*.pro'
+    }
+}
+
+jar {
+    metaInf.from 'src/META-INF'
+}
+
+repositories {
+    google()
+    jcenter()
+}
+
+dependencies {
+    compile project(':base')
+    compile 'com.guardsquare:proguard-core'
+    compileOnly 'com.android.tools.build:gradle:3.0.0'
+    compile gradleApi()
+    compile localGroovy()
+}
+
+publishing {
+    publications {
+        getByName('gradle-plugin') {
+            artifactId = 'proguard-gradle'
+        }
+    }
+}

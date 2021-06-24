@@ -1,0 +1,92 @@
+###################################################################
+# Project information
+###################################################################
+site_name:        ProGuard
+site_description: Optimizer and obfuscator for Java bytecode
+site_author:      Guardsquare NV
+copyright:        Copyright &copy; 2002-2020 Guardsquare NV
+
+###################################################################
+# Options
+###################################################################
+theme:
+  name:     material
+  logo:     img/proguard.png
+  favicon:  img/guardsquare.png
+  language: en
+  palette:  blue
+  font:
+  feature:
+
+docs_dir: md
+site_dir: html
+
+extra_css:
+  - css/extra.css
+
+use_directory_urls: false
+#strict: true # broken links are errors
+
+###################################################################
+# Theme specific
+###################################################################
+extra:
+  #font:
+  #  text: 'Droid Sans'
+  #  code: 'Ubuntu Mono'
+  social:
+  - icon: fontawesome/brands/github
+    link: https://github.com/Guardsquare/proguard
+  - icon: fontawesome/brands/twitter
+    link: https://twitter.com/guardsquare
+  - icon: fontawesome/brands/linkedin
+    link: https://www.linkedin.com/company/guardsquare-nv
+  - icon: fontawesome/brands/facebook
+    link: https://www.facebook.com/guardsquare
+  #feature:
+  #  tabs: true
+
+###################################################################
+# Extensions
+###################################################################
+markdown_extensions:
+- attr_list
+- admonition
+- codehilite
+- footnotes
+- def_list
+
+###################################################################
+# Page tree
+###################################################################
+nav:
+- Home:            manual/index.md
+- Building:        building.md
+- Setup:
+    - Gradle Task:     manual/gradle.md
+    - Gradle Plugin:   manual/gradleplugin.md
+    - Ant Task:        manual/ant.md
+- Configuration:
+    - Usage:           manual/usage.md
+    - Attributes:      manual/attributes.md
+    - Optimizations:   manual/optimizations.md
+    - Examples:        manual/examples.md
+- Languages:
+    - Java:            manual/java.md
+    - Kotlin:          manual/kotlin.md
+- Tools:
+    - ReTrace:
+        - Introduction:    manual/retrace/index.md
+        - Usage:           manual/retrace/usage.md
+        - Mapping File:    manual/retrace/mapping.md
+        - Examples:        manual/retrace/examples.md
+- Troubleshooting:
+    - Overview:        manual/troubleshooting.md
+    - Limitations:     manual/limitations.md
+- Reference Card:  manual/refcard.md
+- Version History: releasenotes.md
+- Feedback:        feedback.md
+- License:
+    - Overview:        license.md
+    - GPL:             GPL.md
+    - GPL Exception:   GPL_exception.md

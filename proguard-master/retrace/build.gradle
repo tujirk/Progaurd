@@ -1,0 +1,47 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
+plugins {
+    id 'com.github.johnrengelman.shadow'
+    id 'com.jfrog.bintray'
+    id 'java'
+    id 'maven-publish'
+}
+
+repositories {
+    jcenter()
+}
+
+sourceCompatibility = "${target}"
+targetCompatibility = "${target}"
+
+sourceSets.main {
+    java {
+        srcDirs = ['src']
+    }
+    resources {
+        srcDirs = ['src']
+        include '**/*.properties'
+        include '**/*.gif'
+        include '**/*.png'
+        include '**/*.pro'
+    }
+}
+
+dependencies {
+    compile project(':base')
+    compile 'com.guardsquare:proguard-core'
+}
+
+task fatJar(type: ShadowJar) {
+    destinationDirectory.set(file("$rootDir/lib"))
+    archiveFileName.set('retrace.jar')
+    from sourceSets.main.output
+    configurations = [project.configurations.runtime]
+    manifest {
+        attributes(
+                'Manifest-Version': '1.0',
+                'Main-Class': 'proguard.retrace.ReTrace')
+    }
+}
+
+assemble.dependsOn fatJar
